@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useGetUserDataQuery, useGetUserReposQuery } from "./githubapi.js";
-import "./github.css";
+import "./githubapi.js";
+import "./github.css"
 
 const REPOS_PER_PAGE = 5;
 
@@ -101,7 +102,7 @@ function App() {
     setNotFound(false);
   };
 
-  // Auto-hide not found after 3 seconds
+  // Auto-hide after 3 seconds (function same rakha hai)
   const handleNotFound = () => {
     setNotFound(true);
     if (timerRef.current) clearTimeout(timerRef.current);
@@ -133,7 +134,7 @@ function App() {
       </div>
 
       {notFound && (
-        <p className="msg error">❌ User not found. 3 seconds mein clear ho jayega...</p>
+        <p className="msg error">❌ User not found</p>
       )}
 
       {search && !notFound && (
@@ -143,7 +144,6 @@ function App() {
   );
 }
 
-// Wrapper to catch not found
 function NotFoundWrapper({ search, onNotFound, onClear, darkMode }) {
   const { isError, isFetching } = useGetUserDataQuery(search);
 
